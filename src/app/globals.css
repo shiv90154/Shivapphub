@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* ============================= */
+/* Base Reset & Typography */
+/* ============================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-gray-900 antialiased;
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+}
+
+/* ============================= */
+/* Headings */
+/* ============================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #111827;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+/* ============================= */
+/* Paragraphs */
+/* ============================= */
+
+p {
+  @apply text-gray-600;
+}
+
+/* ============================= */
+/* Links */
+/* ============================= */
+
+a {
+  @apply transition duration-200;
+}
+
+a:hover {
+  color: #166534; /* brand green */
+}
+
+/* ============================= */
+/* Buttons */
+/* ============================= */
+
+.btn-primary {
+  @apply bg-green-800 text-white px-6 py-3 rounded-lg font-semibold transition;
+}
+
+.btn-primary:hover {
+  @apply bg-green-900;
+}
+
+.btn-outline {
+  @apply border border-green-800 text-green-800 px-6 py-3 rounded-lg font-semibold transition;
+}
+
+.btn-outline:hover {
+  @apply bg-green-800 text-white;
+}
+
+/* ============================= */
+/* Section Spacing */
+/* ============================= */
+
+.section {
+  @apply py-20 px-6;
+}
+
+.container-custom {
+  @apply max-w-6xl mx-auto px-6;
+}
+
+/* ============================= */
+/* Cards */
+/* ============================= */
+
+.card {
+  @apply bg-white border border-green-100 rounded-xl p-8 shadow-sm transition;
+}
+
+.card:hover {
+  @apply shadow-md;
+}
+
+/* ============================= */
+/* Tables */
+/* ============================= */
+
+table {
+  @apply w-full border-collapse;
+}
+
+th {
+  @apply bg-green-100 text-left p-4;
+}
+
+td {
+  @apply p-4 border-t;
+}
+
+/* ============================= */
+/* Prose (Blog Styling) */
+/* ============================= */
+
+.prose h2 {
+  @apply text-2xl font-bold mt-8 mb-4 text-green-800;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mt-6 mb-3;
+}
+
+.prose p {
+  @apply mb-4 text-gray-700;
+}
+
+.prose ul {
+  @apply list-disc ml-6 mb-4;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+/* ============================= */
+/* Selection Color */
+/* ============================= */
+
+::selection {
+  background: #166534;
+  color: white;
+}
+
+/* ============================= */
+/* Scrollbar (optional premium feel) */
+/* ============================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #166534;
+  border-radius: 9999px;
+}
