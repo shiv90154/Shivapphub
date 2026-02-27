@@ -1,4 +1,11 @@
-import type { BlogPost } from "@/types/blog"; // adjust import path as needed
+export type BlogPost = {
+  slug: string;
+  title: string;
+  description: string;
+  content: string;
+  image?: string;
+  date: string;
+};
 
 export const blogPosts: BlogPost[] = [
   // Existing posts (keep and maybe enhance)

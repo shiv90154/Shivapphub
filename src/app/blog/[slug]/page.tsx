@@ -239,19 +239,19 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Article content */}
         <article className="max-w-3xl mx-auto px-4 py-8">
           <div className="prose prose-lg prose-green prose-headings:font-bold prose-a:text-green-700 prose-a:no-underline hover:prose-a:underline max-w-none">
-            {post.content.split("\n").map((line, i) => {
-              if (line.startsWith("## ")) {
-                return <h2 key={i} className="text-2xl font-bold mt-8 mb-4">{line.slice(3)}</h2>;
-              } else if (line.startsWith("### ")) {
-                return <h3 key={i} className="text-xl font-semibold mt-6 mb-2">{line.slice(4)}</h3>;
-              } else if (line.startsWith("- ")) {
-                return <li key={i} className="ml-6">{line.slice(2)}</li>;
-              } else if (line.trim() === "") {
-                return <br key={i} />;
-              } else {
-                return <p key={i} className="mb-4">{line}</p>;
-              }
-            })}
+        {post.content.split("\n").map((line: string, i: number) => {
+  if (line.startsWith("## ")) {
+    return <h2 key={i} className="text-2xl font-bold mt-8 mb-4">{line.slice(3)}</h2>;
+  } else if (line.startsWith("### ")) {
+    return <h3 key={i} className="text-xl font-semibold mt-6 mb-2">{line.slice(4)}</h3>;
+  } else if (line.startsWith("- ")) {
+    return <li key={i} className="ml-6">{line.slice(2)}</li>;
+  } else if (line.trim() === "") {
+    return <br key={i} />;
+  } else {
+    return <p key={i} className="mb-4">{line}</p>;
+  }
+})}
           </div>
 
           {/* ✅ 6. Author box */}
@@ -366,8 +366,6 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </section>
         )}
-
-     
 
         {/* Footer spacing */}
         <div className="h-12"></div>
