@@ -12,7 +12,7 @@ export default function Home() {
       <WhyChooseUs />
       <Testimonials />
       <FAQ />
-    <CTA/>
+
     </>
   );
 }
