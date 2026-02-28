@@ -1,8 +1,19 @@
 @import "tailwindcss";
 
-/* ============================= */
-/* Base Reset & Typography */
-/* ============================= */
+/* ===================================== */
+/* ROOT BRAND VARIABLES */
+/* ===================================== */
+
+:root {
+  --brand-primary: #166534;   /* deep green */
+  --brand-accent: #22c55e;    /* fresh green */
+  --brand-dark: #0f172a;      /* dark navy */
+  --brand-light: #f0fdf4;     /* soft green bg */
+}
+
+/* ===================================== */
+/* BASE RESET */
+/* ===================================== */
 
 html {
   scroll-behavior: smooth;
@@ -12,153 +23,209 @@ body {
   @apply bg-white text-gray-900 antialiased;
   font-family: "Inter", sans-serif;
   line-height: 1.7;
+  letter-spacing: -0.01em;
 }
 
-/* ============================= */
-/* Headings */
-/* ============================= */
+/* ===================================== */
+/* TYPOGRAPHY SYSTEM */
+/* ===================================== */
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  letter-spacing: -0.02em;
   line-height: 1.2;
-  color: #111827;
+  color: var(--brand-dark);
+  letter-spacing: -0.02em;
 }
 
-h1 {
-  @apply text-4xl md:text-5xl;
-}
-
-h2 {
-  @apply text-3xl md:text-4xl;
-}
-
-h3 {
-  @apply text-2xl;
-}
-
-/* ============================= */
-/* Paragraphs */
-/* ============================= */
+h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+h2 { @apply text-3xl md:text-4xl; }
+h3 { @apply text-2xl; }
 
 p {
   @apply text-gray-600;
+  max-width: 75ch;
 }
 
-/* ============================= */
-/* Links */
-/* ============================= */
+/* ===================================== */
+/* LINKS */
+/* ===================================== */
 
 a {
-  @apply transition duration-200;
+  @apply transition duration-200 ease-in-out;
 }
 
 a:hover {
-  color: #166534; /* brand green */
+  color: var(--brand-primary);
 }
 
-/* ============================= */
-/* Buttons */
-/* ============================= */
+/* ===================================== */
+/* BUTTON SYSTEM */
+/* ===================================== */
 
 .btn-primary {
-  @apply bg-green-800 text-white px-6 py-3 rounded-lg font-semibold transition;
+  @apply inline-flex items-center justify-center
+         bg-green-800 text-white
+         px-6 py-3 rounded-xl
+         font-semibold
+         transition duration-300
+         shadow-sm;
 }
 
 .btn-primary:hover {
-  @apply bg-green-900;
+  @apply bg-green-900 shadow-md scale-[1.02];
 }
 
 .btn-outline {
-  @apply border border-green-800 text-green-800 px-6 py-3 rounded-lg font-semibold transition;
+  @apply inline-flex items-center justify-center
+         border border-green-800
+         text-green-800
+         px-6 py-3 rounded-xl
+         font-semibold
+         transition duration-300;
 }
 
 .btn-outline:hover {
-  @apply bg-green-800 text-white;
+  @apply bg-green-800 text-white scale-[1.02];
 }
 
-/* ============================= */
-/* Section Spacing */
-/* ============================= */
+.btn-ghost {
+  @apply text-green-800 font-medium transition;
+}
+
+.btn-ghost:hover {
+  @apply underline;
+}
+
+/* ===================================== */
+/* LAYOUT SYSTEM */
+/* ===================================== */
 
 .section {
-  @apply py-20 px-6;
+  @apply py-24;
 }
 
 .container-custom {
   @apply max-w-6xl mx-auto px-6;
 }
 
-/* ============================= */
-/* Cards */
-/* ============================= */
+/* ===================================== */
+/* CARD SYSTEM */
+/* ===================================== */
 
 .card {
-  @apply bg-white border border-green-100 rounded-xl p-8 shadow-sm transition;
+  @apply bg-white
+         border border-green-100
+         rounded-2xl
+         p-8
+         shadow-sm
+         transition duration-300;
 }
 
 .card:hover {
-  @apply shadow-md;
+  @apply shadow-lg -translate-y-1;
 }
 
-/* ============================= */
-/* Tables */
-/* ============================= */
+/* ===================================== */
+/* TABLES */
+/* ===================================== */
 
 table {
-  @apply w-full border-collapse;
+  @apply w-full border-collapse text-sm;
 }
 
 th {
-  @apply bg-green-100 text-left p-4;
+  @apply bg-green-100 text-left p-4 font-semibold;
 }
 
 td {
-  @apply p-4 border-t;
+  @apply p-4 border-t border-gray-100;
 }
 
-/* ============================= */
-/* Prose (Blog Styling) */
-/* ============================= */
+/* ===================================== */
+/* BLOG PROSE STYLING */
+/* ===================================== */
+
+.prose {
+  @apply text-gray-700 leading-relaxed;
+}
 
 .prose h2 {
-  @apply text-2xl font-bold mt-8 mb-4 text-green-800;
+  @apply text-2xl font-bold mt-10 mb-4 text-green-800;
 }
 
 .prose h3 {
-  @apply text-xl font-semibold mt-6 mb-3;
+  @apply text-xl font-semibold mt-8 mb-3;
 }
 
 .prose p {
-  @apply mb-4 text-gray-700;
+  @apply mb-5;
 }
 
 .prose ul {
-  @apply list-disc ml-6 mb-4;
+  @apply list-disc ml-6 mb-5;
 }
 
 .prose li {
   @apply mb-2;
 }
 
-/* ============================= */
-/* Selection Color */
-/* ============================= */
+.prose a {
+  @apply text-green-700 font-medium;
+}
+
+.prose a:hover {
+  @apply underline;
+}
+
+/* ===================================== */
+/* NAVBAR SHADOW ON SCROLL (Optional) */
+/* ===================================== */
+
+.nav-shadow {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* ===================================== */
+/* SELECTION */
+/* ===================================== */
 
 ::selection {
-  background: #166534;
+  background: var(--brand-primary);
   color: white;
 }
 
-/* ============================= */
-/* Scrollbar (optional premium feel) */
-/* ============================= */
+/* ===================================== */
+/* SCROLLBAR */
+/* ===================================== */
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
 ::-webkit-scrollbar-thumb {
-  background-color: #166534;
+  background-color: var(--brand-primary);
   border-radius: 9999px;
+}
+
+/* ===================================== */
+/* SMOOTH FADE ANIMATION */
+/* ===================================== */
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
