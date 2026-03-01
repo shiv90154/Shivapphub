@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Web & App Development Services in Himachal Pradesh | ShivAppHub",
   description:
-    "Professional Website Development, App Development, SEO and E-commerce solutions across all districts of Himachal Pradesh.",
+    "Professional Website Development, App Development, SEO, UI/UX Design, Maintenance and Digital Marketing across all districts of Himachal Pradesh.",
   alternates: {
     canonical: "https://shivapphub.in/services",
   },
@@ -36,7 +36,7 @@ const services = [
     ],
   },
   {
-    title: "SEO & Digital Growth",
+    title: "SEO Optimization",
     desc: "Technical SEO and local ranking strategies for Himachal businesses.",
     image: "/images/seo-services.jpg",
     href: "/services/seo",
@@ -47,12 +47,47 @@ const services = [
       "Keyword Strategy",
     ],
   },
+  {
+    title: "UI/UX Design",
+    desc: "Modern, conversion-focused design systems that enhance user experience.",
+    image: "/images/ui-ux-design.jpg",
+    href: "/services/ui-ux",
+    features: [
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Visual Design",
+    ],
+  },
+  {
+    title: "Website Maintenance",
+    desc: "Regular updates, performance optimization & security monitoring.",
+    image: "/images/maintenance.jpg",
+    href: "/services/maintenance",
+    features: [
+      "Regular Updates",
+      "Security Monitoring",
+      "Performance Tuning",
+      "Backup Management",
+    ],
+  },
+  {
+    title: "Digital Marketing",
+    desc: "Google Ads, social media & performance marketing for business growth.",
+    image: "/images/marketing.jpg",
+    href: "/services/marketing",
+    features: [
+      "Google Ads",
+      "Social Media Marketing",
+      "Content Strategy",
+      "Analytics & Reporting",
+    ],
+  },
 ];
 
 export default function ServicesPage() {
   return (
     <main className="bg-white text-gray-900">
-
       {/* HERO */}
       <section className="relative py-24 bg-gradient-to-b from-green-50 to-white text-center">
         <div className="max-w-4xl mx-auto px-6">
@@ -69,7 +104,6 @@ export default function ServicesPage() {
       {/* SERVICES GRID */}
       <section className="py-20 bg-gradient-to-b from-white to-green-50">
         <div className="max-w-7xl mx-auto px-6">
-
           <div className="grid md:grid-cols-3 gap-10">
             {services.map((service, index) => (
               <div
@@ -114,7 +148,6 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -138,7 +171,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }
