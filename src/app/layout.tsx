@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SchemaMarkup from "@/components/SchemaMarkup";
-
+import { Analytics } from "@vercel/analytics/next"
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
