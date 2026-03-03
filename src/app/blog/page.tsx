@@ -102,55 +102,9 @@ export default function BlogPage() {
         ))}
       </section>
 
-      {/* Internal SEO Boost Section */}
-      <section className="bg-green-50 py-16">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-2xl font-bold mb-4">
-            Explore Our Development Services
-          </h2>
-          <p className="text-gray-600 mb-6">
-            We provide website and app development services across Himachal Pradesh.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/web-development-in-shimla"
-              className="text-green-800 font-medium hover:underline"
-            >
-              Web Development in Shimla
-            </Link>
-            <Link
-              href="/web-development-in-kangra"
-              className="text-green-800 font-medium hover:underline"
-            >
-              Web Development in Kangra
-            </Link>
-            <Link
-              href="/website-development-cost-in-himachal"
-              className="text-green-800 font-medium hover:underline"
-            >
-              Website Development Cost Guide
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-20 text-center bg-green-800 text-white">
-        <h2 className="text-3xl font-bold">
-          Want to Grow Your Business Online?
-        </h2>
-        <p className="mt-4 text-green-100">
-          Let’s build something powerful together.
-        </p>
-        <div className="mt-8">
-          <Link
-            href="/contact"
-            className="bg-white text-green-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
-          >
-            Get Free Consultation
-          </Link>
-        </div>
-      </section>
+
+  
     </main>
   );
 }
