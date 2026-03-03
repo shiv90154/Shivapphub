@@ -4,23 +4,32 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, User, Home,Briefcase, FileText, Mail } from "lucide-react";
+import { Menu, X, User, Home, Briefcase, FileText, Mail, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsResourcesOpen(false);
   }, [pathname]);
 
-const navLinks = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/about", label: "About", icon: User },
-  { href: "/services", label: "Services", icon: Briefcase },
-  { href: "/blog", label: "Blog", icon: FileText },
-  { href: "/contact", label: "Contact", icon: Mail },
-];
+  const navLinks = [
+    { href: "/", label: "Home", icon: Home },
+    { href: "/about", label: "About", icon: User },
+    { href: "/services", label: "Services", icon: Briefcase },
+    { href: "/blog", label: "Blog", icon: FileText },
+    { href: "/contact", label: "Contact", icon: Mail },
+  ];
+
+  const resourceLinks = [
+    { href: "/faq", label: "FAQ" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/industries", label: "Industries" },
+    { href: "/case-studies", label: "Case Studies" },
+  ];
 
   return (
     <motion.header
@@ -41,7 +50,7 @@ const navLinks = [
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8 relative">
+          <nav className="hidden md:flex items-center space-x-6 relative">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               const Icon = link.icon;
@@ -60,7 +69,6 @@ const navLinks = [
                         : "text-gray-600 group-hover:text-green-600 group-hover:scale-110"
                     }`}
                   />
-
                   <span
                     className={`transition-colors ${
                       isActive
@@ -70,8 +78,6 @@ const navLinks = [
                   >
                     {link.label}
                   </span>
-
-                  {/* Sliding Active Indicator */}
                   {isActive && (
                     <motion.div
                       layoutId="activeNav"
@@ -81,6 +87,53 @@ const navLinks = [
                 </Link>
               );
             })}
+
+            {/* Resources Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsResourcesOpen(true)}
+              onMouseLeave={() => setIsResourcesOpen(false)}
+            >
+              <button
+                className="flex items-center gap-2 px-2 py-1 text-base font-medium group text-gray-700 hover:text-green-600"
+              >
+                <FileText size={18} className="text-gray-600 group-hover:text-green-600" />
+                <span>Resources</span>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${
+                    isResourcesOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isResourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                  >
+                    {resourceLinks.map((link) => {
+                      const isActive = pathname === link.href;
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={`block px-4 py-2 text-sm hover:bg-gray-50 ${
+                            isActive ? "text-green-600 font-medium" : "text-gray-700"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
           {/* CTA */}
@@ -140,6 +193,34 @@ const navLinks = [
                   </motion.div>
                 );
               })}
+
+              {/* Resource links for mobile (no dropdown) */}
+              <div className="border-t pt-4 mt-2">
+                <p className="text-sm text-gray-500 mb-2 px-3">Resources</p>
+                {resourceLinks.map((link, index) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <motion.div
+                      key={link.href}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: (navLinks.length + index) * 0.1 }}
+                    >
+                      <Link
+                        href={link.href}
+                        className={`flex items-center gap-3 text-lg font-medium px-3 py-2 rounded-lg transition ${
+                          isActive
+                            ? "text-green-600 bg-green-50"
+                            : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                        }`}
+                      >
+                        <FileText size={20} />
+                        {link.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
 
               <Link
                 href="/contact"

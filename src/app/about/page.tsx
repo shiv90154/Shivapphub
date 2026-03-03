@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://shivapphub.in/og-about.jpg", // Replace with actual image
+        url: "https://shivapphub.in/og-about.jpg",
         width: 1200,
         height: 630,
         alt: "ShivAppHub About",
@@ -42,7 +42,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Enhanced structured data
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -53,9 +52,9 @@ const structuredData = {
       description:
         "Web & App Development company in Himachal Pradesh providing modern, scalable and SEO-friendly solutions.",
       url: "https://shivapphub.in",
-      telephone: "+91-12345-67890", // Replace with actual
+      telephone: "+91-12345-67890",
       email: "info@shivapphub.in",
-      logo: "https://shivapphub.in/logo.png", // Replace
+      logo: "https://shivapphub.in/logo.png",
       image: "https://shivapphub.in/about-hero.jpg",
       address: {
         "@type": "PostalAddress",
@@ -95,24 +94,13 @@ const structuredData = {
     {
       "@type": "Person",
       "@id": "https://shivapphub.in/#founder",
-      name: "Shiv Kumar", // Replace with actual founder name
+      name: "Shiv Kumar",
       jobTitle: "Founder & Lead Developer",
       worksFor: { "@id": "https://shivapphub.in/#organization" },
-    },
-    {
-      "@type": "Review",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-      },
-      author: { "@type": "Person", name: "Rajesh Sharma" },
-      itemReviewed: { "@id": "https://shivapphub.in/#organization" },
     },
   ],
 };
 
-// Team data (placeholders)
 const team = [
   { name: "Shiv Kumar", role: "Founder & Lead Developer", image: "/team/shiv.jpg" },
   { name: "Priya Sharma", role: "UI/UX Designer", image: "/team/priya.jpg" },
@@ -120,7 +108,6 @@ const team = [
   { name: "Neha Verma", role: "Project Manager", image: "/team/neha.jpg" },
 ];
 
-// Testimonials
 const testimonials = [
   {
     quote: "ShivAppHub built our hotel website and handled SEO. Bookings increased by 40% in 3 months!",
@@ -139,7 +126,6 @@ const testimonials = [
   },
 ];
 
-// FAQs
 const faqs = [
   {
     q: "What makes ShivAppHub different from other web agencies?",
@@ -162,13 +148,11 @@ const faqs = [
 export default function AboutPage() {
   return (
     <main className="bg-white text-gray-900">
-      {/* JSON‑LD Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Hero Section */}
       <section className="relative py-24 text-center bg-gradient-to-b from-green-50 to-white overflow-hidden">
         <div className="absolute top-0 left-0 w-72 h-72 bg-green-200/40 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-300/30 rounded-full blur-3xl"></div>
@@ -186,7 +170,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
@@ -203,7 +186,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story */}
       <section className="py-20 bg-gradient-to-b from-white to-green-50">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -222,7 +204,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Values */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12">
           <div className="text-center">
@@ -255,7 +236,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
       <section className="py-20 bg-green-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -265,7 +245,6 @@ export default function AboutPage() {
             {team.map((member, i) => (
               <div key={i} className="text-center">
                 <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gray-300 overflow-hidden">
-                  {/* Replace with actual images */}
                   <div className="w-full h-full bg-green-200 flex items-center justify-center text-2xl">
                     {member.name[0]}
                   </div>
@@ -278,7 +257,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -325,7 +303,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Districts Served */}
       <section className="py-20 bg-gradient-to-b from-white to-green-50">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
@@ -345,14 +322,12 @@ export default function AboutPage() {
               </span>
             ))}
           </div>
-          {/* Simple Map Placeholder */}
           <div className="mt-12 bg-gray-200 h-64 rounded-2xl flex items-center justify-center text-gray-500">
             [Interactive Map of Himachal with service areas – coming soon]
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -373,7 +348,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="py-20 bg-green-50">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -393,14 +367,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-24 bg-gradient-to-br from-green-700 to-emerald-600 text-white text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl font-bold">
             Ready to Grow Your Business Online?
           </h2>
           <p className="mt-6 text-green-100">
-            Let’s build something powerful, scalable and SEO‑ready for your business.
+            Let's build something powerful, scalable and SEO‑ready for your business.
           </p>
           <div className="mt-10">
             <Link

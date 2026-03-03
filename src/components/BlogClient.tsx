@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { BlogPost } from "@/app/blog/data"; // adjust path as needed
+import type { BlogPost } from "@/app/blog/data";
 
 // Helper: reading time
 function readingTime(content: string) {
@@ -41,11 +41,9 @@ export default function BlogClient({ posts }: BlogClientProps) {
   // Compute filtered posts based on category and search
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
-      // Category filter
       const postCat = getCategoryFromSlug(post.slug);
       if (selectedCategory !== "All" && postCat !== selectedCategory) return false;
 
-      // Search filter (title + description)
       if (searchQuery.trim() !== "") {
         const query = searchQuery.toLowerCase();
         const titleMatch = post.title.toLowerCase().includes(query);
@@ -70,24 +68,22 @@ export default function BlogClient({ posts }: BlogClientProps) {
     setCurrentPage(1);
   };
 
-  // All categories for the filter buttons
   const allCategories = getAllCategories(posts);
 
   return (
     <main className="bg-white text-gray-900">
-      {/* Hero Section (same as before, but search now functional) */}
-      <section className="relative py-5 bg-gradient-to-b from-green-50 to-white text-center overflow-hidden">
+      {/* Hero Section with search */}
+      <section className="relative py-10 bg-gradient-to-b from-green-50 to-white text-center overflow-hidden">
         <div className="absolute top-0 left-0 w-72 h-72 bg-green-200/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-300/20 rounded-full blur-3xl"></div>
         <div className="relative max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold">
             Our <span className="text-green-600">Blog</span>
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-lg">
+          <p className="mt-6 max-w-2xl mx-auto text-gray-600 text-lg">
             Practical insights on web, apps and SEO for Himachal businesses.
           </p>
-          {/* Search Input */}
-          <div className="mt-4 max-w-md mx-auto">
+          <div className="mt-8 max-w-md mx-auto">
             <div className="relative">
               <input
                 type="text"
@@ -116,7 +112,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
       </section>
 
       {/* Main Content */}
-      <section className="max-w-7xl mx-auto px-6 py-2 lg:py-10">
+      <section className="max-w-7xl mx-auto px-6 py-10 lg:py-24">
         <div className="lg:grid lg:grid-cols-12 lg:gap-12">
           {/* Blog Posts Grid */}
           <div className="lg:col-span-8">
@@ -159,7 +155,6 @@ export default function BlogClient({ posts }: BlogClientProps) {
                       )}
 
                       <div className="p-6 flex flex-col flex-grow">
-                        {/* Category Tag */}
                         <span className="text-xs font-medium text-green-700 bg-green-50 px-3 py-1 rounded-full w-fit mb-3">
                           {category}
                         </span>
@@ -255,7 +250,6 @@ export default function BlogClient({ posts }: BlogClientProps) {
 
           {/* Sidebar */}
           <aside className="lg:col-span-4 mt-12 lg:mt-0">
-            {/* About the Blog */}
             <div className="bg-green-50 p-6 rounded-2xl mb-8">
               <h3 className="text-xl font-bold mb-4">About the Blog</h3>
               <p className="text-gray-700 mb-4">
@@ -270,7 +264,6 @@ export default function BlogClient({ posts }: BlogClientProps) {
               </Link>
             </div>
 
-            {/* Categories */}
             <div className="bg-white border border-green-100 p-6 rounded-2xl mb-8">
               <h3 className="text-xl font-bold mb-4">Categories</h3>
               <ul className="space-y-2">
@@ -296,7 +289,6 @@ export default function BlogClient({ posts }: BlogClientProps) {
               </ul>
             </div>
 
-            {/* Popular Posts (first 3) */}
             <div className="bg-white border border-green-100 p-6 rounded-2xl">
               <h3 className="text-xl font-bold mb-4">Popular Posts</h3>
               <div className="space-y-4">
@@ -304,12 +296,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
                   <div key={post.slug} className="flex gap-3">
                     {post.image && (
                       <div className="relative h-16 w-16 flex-shrink-0 rounded-lg overflow-hidden">
-                        <Image
-                          src={post.image}
-                          alt=""
-                          fill
-                          className="object-cover"
-                        />
+                        <Image src={post.image} alt="" fill className="object-cover" />
                       </div>
                     )}
                     <div>

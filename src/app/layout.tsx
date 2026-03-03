@@ -4,7 +4,9 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SchemaMarkup from "@/components/SchemaMarkup";
-import { Analytics } from "@vercel/analytics/next"
+import CallPopup from "@/components/CallPopup";
+import { Analytics } from "@vercel/analytics/react";
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -82,6 +84,27 @@ export default function RootLayout({
       >
         <SchemaMarkup />
 
+        {/* Copy Protection Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+              });
+
+              document.addEventListener('keydown', function(e) {
+                if (
+                  (e.ctrlKey && ['c','u','s','a'].includes(e.key.toLowerCase())) ||
+                  (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) ||
+                  e.key === 'F12'
+                ) {
+                  e.preventDefault();
+                }
+              });
+            `,
+          }}
+        />
+
         <div className="min-h-screen flex flex-col">
           <Navbar />
 
@@ -89,8 +112,12 @@ export default function RootLayout({
             {children}
           </main>
 
+          <CallPopup />
+
           <Footer />
         </div>
+
+        <Analytics />
       </body>
     </html>
   );
