@@ -568,7 +568,7 @@ export default function ShimlaPage() {
               Contact Us Today
             </Link>
             <a
-              href="tel:+911234567890"
+              href="tel:+919015484696"
               className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-800 transition"
             >
               📞 Call Us Now
