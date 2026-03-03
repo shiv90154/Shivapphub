@@ -255,7 +255,7 @@ export default async function BlogPostPage({ params }: Props) {
                     .toLowerCase()
                     .replace(/[^\w\s]/g, "")
                     .replace(/\s+/g, "-");
-                  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
+                  const HeadingTag = `h${level}` as React.ElementType;
                   return (
                     <HeadingTag key={i} id={id} className="scroll-mt-24">
                       {text}
