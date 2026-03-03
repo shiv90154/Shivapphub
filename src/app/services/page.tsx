@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Web & App Development Services in Himachal Pradesh | ShivAppHub",
@@ -168,7 +169,7 @@ export default function ServicesPage() {
   return (
     <main className="bg-white text-gray-900">
       {/* HERO */}
-      <section className="relative py-24 bg-gradient-to-b from-green-50 to-white text-center">
+      <section className="relative py-10 bg-gradient-to-b from-green-50 to-white text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             Our <span className="text-green-600">Services</span>
@@ -190,11 +191,13 @@ export default function ServicesPage() {
                 className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100"
               >
                 {/* IMAGE */}
-                <div className="h-48 overflow-hidden bg-green-100">
-                  <img
+                <div className="h-48 overflow-hidden bg-green-100 relative">
+                  <Image
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-500"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
                   />
                 </div>
 
@@ -242,7 +245,9 @@ export default function ServicesPage() {
           <div className="grid grid-cols-4 md:grid-cols-8 gap-6 items-center justify-items-center">
             {technologies.map((tech, i) => (
               <div key={i} className="flex flex-col items-center">
-                <img src={tech.icon} alt={tech.name} className="h-10 w-10 mb-2" />
+                <div className="h-10 w-10 mb-2 relative">
+                  <Image src={tech.icon} alt={tech.name} fill className="object-contain" />
+                </div>
                 <span className="text-xs text-gray-600">{tech.name}</span>
               </div>
             ))}

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, User, Briefcase, FileText, Mail } from "lucide-react";
+import { Menu, X, User, Home,Briefcase, FileText, Mail } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,12 +14,13 @@ export default function Navbar() {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  const navLinks = [
-    { href: "/about", label: "About", icon: User },
-    { href: "/services", label: "Services", icon: Briefcase },
-    { href: "/blog", label: "Blog", icon: FileText },
-    { href: "/contact", label: "Contact", icon: Mail },
-  ];
+const navLinks = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/about", label: "About", icon: User },
+  { href: "/services", label: "Services", icon: Briefcase },
+  { href: "/blog", label: "Blog", icon: FileText },
+  { href: "/contact", label: "Contact", icon: Mail },
+];
 
   return (
     <motion.header

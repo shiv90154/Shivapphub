@@ -72,7 +72,7 @@ export default function ContactPage() {
     <main className="bg-white text-gray-900">
       {/* Hero Section */}
       <motion.section
-        className="bg-gradient-to-b from-green-50 to-white py-24 text-center"
+        className="bg-gradient-to-b from-green-50 to-white py-10 text-center"
         initial="hidden"
         animate="visible"
         variants={fadeUp}
