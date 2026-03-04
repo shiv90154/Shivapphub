@@ -62,7 +62,7 @@ export default function ShimlaPage() {
     name: "ShivAppHub - Shimla",
     image: "https://shivapphub.in/logo.png",
     url: "https://shivapphub.in/web-development-in-shimla",
-    telephone: "+91-12345-67890", // Replace with actual
+    telephone: "+919015484696", // Replace with actual
     email: "hello@shivapphub.in",
     priceRange: "₹₹",
     address: {

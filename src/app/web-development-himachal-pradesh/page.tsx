@@ -56,7 +56,7 @@ export default function HimachalMasterPage() {
     name: "ShivAppHub",
     image: "https://shivapphub.in/logo.png", // replace
     url: "https://shivapphub.in/",
-    telephone: "+91-12345-67890", // replace with actual
+    telephone: "+919015484696", // replace with actual
     priceRange: "₹₹",
     areaServed: [
       "Shimla",

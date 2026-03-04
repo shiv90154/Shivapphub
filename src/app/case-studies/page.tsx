@@ -1,6 +1,8 @@
+// app/case-studies/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, MapPin, Tag } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Case Studies – Web & App Development Success Stories in Himachal Pradesh",
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Sample case studies data
+// Sample case studies data (same as before)
 const caseStudies = [
   {
     title: "Hotel Shimla Heights – 40% Increase in Direct Bookings",
@@ -112,24 +114,24 @@ const caseStudies = [
   },
 ];
 
-export default function CaseStudiesPage() {
-  // JSON-LD for case studies (ItemList with CreativeWork)
-  const caseStudiesSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: caseStudies.map((cs, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "CreativeWork",
-        name: cs.title,
-        description: cs.challenge,
-        about: cs.industry,
-        location: cs.location,
-      },
-    })),
-  };
+// JSON-LD for case studies (ItemList with CreativeWork)
+const caseStudiesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: caseStudies.map((cs, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "CreativeWork",
+      name: cs.title,
+      description: cs.challenge,
+      about: cs.industry,
+      location: cs.location,
+    },
+  })),
+};
 
+export default function CaseStudiesPage() {
   return (
     <>
       <script
@@ -137,87 +139,125 @@ export default function CaseStudiesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudiesSchema) }}
       />
 
-      <div className="bg-white">
-        {/* Hero */}
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
-          <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl font-extrabold sm:text-5xl">
-              Success Stories
+      <main className="bg-white text-gray-900">
+        {/* Hero Section */}
+        <section className="relative py-20 bg-gradient-to-br from-green-50 via-white to-green-50 overflow-hidden">
+          {/* Animated blobs (ensure animate-blob is defined in global CSS) */}
+          <div className="absolute top-0 left-0 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob [animation-delay:2000ms]" />
+
+          <div className="relative max-w-4xl mx-auto px-6 text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              Success{" "}
+              <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                Stories
+              </span>
             </h1>
-            <p className="mt-4 text-xl max-w-3xl mx-auto">
+            <p className="mt-6 text-xl text-gray-600">
               Real results for real businesses across Himachal Pradesh.
             </p>
           </div>
-        </div>
+        </section>
 
         {/* Case Studies Grid */}
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <section className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {caseStudies.map((cs, index) => (
-              <div
+              <article
                 key={index}
-                className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition group"
+                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 hover:border-green-200 overflow-hidden flex flex-col"
               >
-                {/* Image placeholder – in production, use Next/Image with real images */}
-                <div className="h-48 bg-gray-300 relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-opacity-50 text-6xl font-bold">
-                    {/* Icon or placeholder */}
-                  </div>
-                  {/* Uncomment when you have real images */}
-                  {/* <Image src={cs.image} alt={cs.title} fill className="object-cover" /> */}
+                {/* Image area with gradient placeholder */}
+                <div className="relative h-48 w-full bg-gradient-to-br from-green-400 to-emerald-500">
+                  {cs.image ? (
+                    <Image
+                      src={cs.image}
+                      alt={cs.title}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-white text-opacity-30 text-7xl font-bold">
+                      {/* Placeholder icon or text */}
+                    </div>
+                  )}
+                  {/* Optional overlay with icon */}
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Industry & Location */}
+                  <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
                       {cs.industry}
                     </span>
-                    <span className="text-gray-400">•</span>
-                    <span>{cs.location}</span>
+                    <span className="text-gray-300">•</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4 text-gray-400" />
+                      {cs.location}
+                    </span>
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">
+
+                  {/* Title */}
+                  <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">
                     {cs.title}
                   </h2>
-                  <p className="text-gray-700 mb-4 line-clamp-3">{cs.challenge}</p>
+
+                  {/* Challenge preview */}
+                  <p className="text-gray-600 mb-4 flex-grow line-clamp-3">
+                    {cs.challenge}
+                  </p>
+
+                  {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {cs.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
+                        className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full"
                       >
+                        <Tag className="w-3 h-3" />
                         {tag}
                       </span>
                     ))}
                   </div>
+
+                  {/* Read more link */}
                   <Link
-                    href={`/case-studies/${index}`} // we could create dynamic pages later
-                    className="inline-block text-blue-600 font-medium hover:underline"
+                    href={`/case-studies/${index}`} // We'll create dynamic pages later
+                    className="inline-flex items-center text-green-700 font-medium hover:text-green-800 transition-colors mt-auto"
                   >
-                    Read full story →
+                    Read full story
+                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
-              </div>
+
+                {/* Subtle corner accent on hover */}
+                <div className="absolute bottom-0 right-0 w-16 h-16 bg-green-100 rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </article>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* CTA */}
-        <div className="bg-gray-100">
-          <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Ready to write your success story?
-            </h2>
-            <p className="text-lg text-gray-700 mb-6">
-              Let's discuss how we can help your business grow with custom digital solutions.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition text-lg"
-            >
-              Start Your Project
-            </Link>
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-green-50">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <div className="bg-white rounded-3xl shadow-xl p-12 border border-green-100">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Ready to write your success story?
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Let's discuss how we can help your business grow with custom digital solutions.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 }

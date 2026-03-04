@@ -28,7 +28,7 @@ export default function Footer() {
     description:
       "Web & App Development company in Himachal Pradesh providing modern, scalable and SEO-friendly solutions.",
     url: "https://shivapphub.com", // Replace with actual domain
-    telephone: "+91-12345-67890", // Replace with actual phone
+    telephone: "+919015484696", // Replace with actual phone
     address: {
       "@type": "PostalAddress",
       addressLocality: "Shimla",
@@ -87,8 +87,20 @@ export default function Footer() {
 
   return (
     <>
-   
-      <footer className="bg-green-50 mt-20" aria-labelledby="footer-heading">
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a
+          href="https://wa.me/919015484696?text=Hi%2C%20I'm%20interested%20in%20your%20services."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center w-14 h-14 bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700 hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          aria-label="Chat with us on WhatsApp"
+        >
+          <MessageCircle size={28} />
+        </a>
+      </div>
+
+      <footer className="bg-green-50 " aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
@@ -99,7 +111,7 @@ export default function Footer() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
             {/* Company Info */}
             <div>

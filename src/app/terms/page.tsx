@@ -81,7 +81,7 @@ export default function TermsPage() {
                 Acceptance of Terms
               </h2>
               <p className="text-gray-600">
-                By accessing or using the ShivAppHub website ("Site") and services, you agree to be bound by these Terms & Conditions ("Terms"). If you do not agree to all of these Terms, please do not use the Site. These Terms apply to all visitors, users, and others who access or use the Site.
+                By accessing or using the ShivAppHub website (&quot;Site&quot;) and services, you agree to be bound by these Terms & Conditions (&quot;Terms&quot;). If you do not agree to all of these Terms, please do not use the Site. These Terms apply to all visitors, users, and others who access or use the Site.
               </p>
             </section>
 
@@ -90,7 +90,7 @@ export default function TermsPage() {
                 <span className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-700 text-xl">2</span>
                 Use of Website
               </h2>
-              <p className="text-gray-600">You agree to use the Site only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Site. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within the Site.</p>
+              <p className="text-gray-600">You agree to use the Site only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else&apos;s use and enjoyment of the Site. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within the Site.</p>
               <p className="mt-2 text-gray-600">You must not:</p>
               <ul className="list-disc pl-6 space-y-1 text-gray-600">
                 <li>Use the Site in any way that violates applicable laws or regulations.</li>
@@ -129,7 +129,7 @@ export default function TermsPage() {
               </h2>
               <p className="text-gray-600">In addition to the other restrictions outlined in these Terms, you agree not to:</p>
               <ul className="list-disc pl-6 space-y-2 text-gray-600">
-                <li>Use the Site in any manner that could disable, overburden, damage, or impair the Site or interfere with any other party's use of the Site.</li>
+                <li>Use the Site in any manner that could disable, overburden, damage, or impair the Site or interfere with any other party&apos;s use of the Site.</li>
                 <li>Use any robot, spider, or other automatic device, process, or means to access the Site for any purpose, including monitoring or copying any of the material on the Site.</li>
                 <li>Introduce any viruses, trojan horses, worms, logic bombs, or other material that is malicious or technologically harmful.</li>
                 <li>Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of the Site, the server on which the Site is stored, or any server, computer, or database connected to the Site.</li>
@@ -150,7 +150,7 @@ export default function TermsPage() {
                 <span className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-700 text-xl">7</span>
                 Disclaimers
               </h2>
-              <p className="text-gray-600">The Site and all information, content, materials, and services included on or otherwise made available to you through the Site are provided on an "as is" and "as available" basis, unless otherwise specified in writing. ShivAppHub makes no representations or warranties of any kind, express or implied, as to the operation of the Site, or the information, content, materials, or services included on or otherwise made available to you through the Site, unless otherwise specified in writing.</p>
+              <p className="text-gray-600">The Site and all information, content, materials, and services included on or otherwise made available to you through the Site are provided on an &quot; as is&quot; and "as available&quot; basis, unless otherwise specified in writing. ShivAppHub makes no representations or warranties of any kind, express or implied, as to the operation of the Site, or the information, content, materials, or services included on or otherwise made available to you through the Site, unless otherwise specified in writing.</p>
               <p className="mt-2 text-gray-600">You expressly agree that your use of the Site is at your sole risk. To the full extent permissible by applicable law, ShivAppHub disclaims all warranties, express or implied, including, but not limited to, implied warranties of merchantability and fitness for a particular purpose. ShivAppHub does not warrant that the Site, information, content, materials, or services included on or otherwise made available to you through the Site, their servers, or electronic communications sent from ShivAppHub are free of viruses or other harmful components.</p>
             </section>
 
@@ -167,7 +167,7 @@ export default function TermsPage() {
                 <span className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-700 text-xl">9</span>
                 Indemnification
               </h2>
-              <p className="text-gray-600">You agree to defend, indemnify, and hold harmless ShivAppHub, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Site, including, but not limited to, any use of the Site's content, services, and products other than as expressly authorized in these Terms.</p>
+              <p className="text-gray-600">You agree to defend, indemnify, and hold harmless ShivAppHub, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys&apos; fees) arising out of or relating to your violation of these Terms or your use of the Site, including, but not limited to, any use of the Site&apos;s content, services, and products other than as expressly authorized in these Terms.</p>
             </section>
 
             <section id="termination">

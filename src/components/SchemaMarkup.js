@@ -7,7 +7,7 @@ export default function SchemaMarkup() {
     description:
       "Web & App Development company in Himachal Pradesh providing modern, scalable and SEO-friendly solutions.",
     url: "https://shivapphub.in",
-    telephone: "+91-12345-67890",
+    telephone: "+919015484696",
     email: "info@shivapphub.in",
     address: {
       "@type": "PostalAddress",

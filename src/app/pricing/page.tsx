@@ -1,6 +1,7 @@
+// app/pricing/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react"; // optional icon
+import { Check, Sparkles, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Pricing – Affordable Web & App Development in Himachal Pradesh",
@@ -100,71 +101,92 @@ const plans = [
   },
 ];
 
-export default function PricingPage() {
-  // Optional: JSON-LD for structured data (OfferCatalog or PriceSpecification)
-  const pricingSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: plans.map((plan, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Product",
-        name: plan.name,
-        description: plan.description,
-        offers: {
-          "@type": "Offer",
-          price: plan.price.replace(/[^0-9]/g, ""), // extract numeric part
-          priceCurrency: "INR",
-          availability: "https://schema.org/InStock",
-        },
+// Structured data for SEO
+const pricingSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: plans.map((plan, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Product",
+      name: plan.name,
+      description: plan.description,
+      offers: {
+        "@type": "Offer",
+        price: plan.price.replace(/[^0-9]/g, ""),
+        priceCurrency: "INR",
+        availability: "https://schema.org/InStock",
       },
-    })),
-  };
+    },
+  })),
+};
 
+export default function PricingPage() {
   return (
     <>
-      {/* Optional JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingSchema) }}
       />
 
-      <div className="bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-              Simple, Transparent Pricing
+      <main className="bg-white text-gray-900">
+        {/* Hero Section */}
+        <section className="relative py-20 bg-gradient-to-br from-green-50 via-white to-green-50 overflow-hidden">
+          {/* Animated blobs (defined in global CSS or Tailwind config) */}
+          <div className="absolute top-0 left-0 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob [animation-delay:2000ms]" />
+
+          <div className="relative max-w-4xl mx-auto px-6 text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              Simple,{" "}
+              <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                Transparent
+              </span>{" "}
+              Pricing
             </h1>
-            <p className="mt-4 text-xl text-gray-600">
+            <p className="mt-6 text-xl text-gray-600">
               Choose the package that fits your needs. All projects start with a free consultation.
             </p>
             <p className="text-sm text-gray-500 mt-2">
               *Prices are indicative and may vary based on specific requirements.
             </p>
           </div>
+        </section>
 
-          {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Pricing Cards */}
+        <section className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-2xl shadow-lg border ${
-                  plan.popular ? "border-blue-500 ring-2 ring-blue-500" : "border-gray-200"
+                className={`relative group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border ${
+                  plan.popular
+                    ? "border-green-500 ring-2 ring-green-500"
+                    : "border-gray-200 hover:border-green-200"
                 } p-6 flex flex-col`}
               >
+                {/* Popular Badge */}
                 {plan.popular && (
-                  <span className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
+                    <Sparkles className="w-4 h-4" />
                     Most Popular
-                  </span>
+                  </div>
                 )}
+
+                {/* Card Header */}
                 <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
                 <p className="text-gray-600 mt-2 text-sm">{plan.description}</p>
+
+                {/* Price */}
                 <div className="mt-4">
                   <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                  {plan.name !== "Mobile App" && <span className="text-gray-500">/project</span>}
+                  {plan.name !== "Mobile App" && (
+                    <span className="text-gray-500 text-sm ml-1">/project</span>
+                  )}
                 </div>
+
+                {/* Features List */}
                 <ul className="mt-6 space-y-3 flex-1">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start text-sm">
@@ -173,54 +195,65 @@ export default function PricingPage() {
                     </li>
                   ))}
                 </ul>
+
+                {/* CTA Button */}
                 <div className="mt-8">
                   <Link
                     href="/contact"
-                    className={`block text-center px-4 py-3 rounded-lg font-medium transition ${
+                    className={`block text-center px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
                       plan.popular
-                        ? "bg-blue-600 text-white hover:bg-blue-700"
-                        : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                        ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-md hover:shadow-xl hover:scale-105"
+                        : "bg-gray-100 text-gray-900 hover:bg-green-600 hover:text-white hover:shadow-md"
                     }`}
                   >
                     {plan.cta}
                   </Link>
                 </div>
+
+                {/* Decorative corner accent (on hover) */}
+                <div className="absolute bottom-0 right-0 w-16 h-16 bg-green-100 rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
             ))}
           </div>
+        </section>
 
-          {/* Custom Project Section */}
-          <div className="mt-16 bg-blue-50 rounded-2xl p-8 border border-blue-100 text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Need a Custom Solution?
-            </h2>
-            <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
-              Every business is unique. Tell us about your project, and we'll create a tailored package just for you.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition text-lg"
-            >
-              Get a Free Quote
-            </Link>
-          </div>
-
-          {/* FAQs teaser */}
-          <div className="mt-12 text-center text-gray-600">
-            <p>
-              Have questions about pricing? Check our{" "}
-              <Link href="/faq" className="text-blue-600 hover:underline">
-                FAQ
-              </Link>{" "}
-              or{" "}
-              <Link href="/contact" className="text-blue-600 hover:underline">
-                contact us
+        {/* Custom Project Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-green-50">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <div className="bg-white rounded-3xl shadow-xl p-12 border border-green-100">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Need a Custom Solution?
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Every business is unique. Tell us about your project, and we'll create a tailored
+                package just for you.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                Get a Free Quote
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              .
-            </p>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+
+        {/* FAQ Teaser */}
+        <section className="pb-20 text-center">
+          <p className="text-gray-600">
+            Have questions about pricing? Check our{" "}
+            <Link href="/faq" className="text-green-600 hover:underline font-medium">
+              FAQ
+            </Link>{" "}
+            or{" "}
+            <Link href="/contact" className="text-green-600 hover:underline font-medium">
+              contact us
+            </Link>
+            .
+          </p>
+        </section>
+      </main>
     </>
   );
 }
